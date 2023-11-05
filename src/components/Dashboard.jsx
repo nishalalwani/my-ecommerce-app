@@ -17,7 +17,9 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 const Dashboard = () => {
 
     const context= useContext(myContext)
+    
     const{mode,product,edithandle,deletehandle,user,order}= context
+   
   return (
     <>
     <Header/>
@@ -36,7 +38,7 @@ const Dashboard = () => {
                             </div>
                             <div className="counter-info">
                                 <div className="counter-count">
-                                    6578
+                                    {order.length}
                                 </div>
                                 <ShoppingCartIcon/>
                             </div>
@@ -49,11 +51,11 @@ const Dashboard = () => {
                         
                         <div className="counter">
                             <div className="counter-title">
-                                conversion rate
+                                Total Products
                             </div>
                             <div className="counter-info">
                                 <div className="counter-count">
-                                    30.5%
+                                {product.length}
                                 </div>
                                 <ShoppingBasketIcon/>
                             </div>
@@ -66,11 +68,11 @@ const Dashboard = () => {
                        
                         <div className="counter">
                             <div className="counter-title">
-                                total profit
+                                Total Users
                             </div>
                             <div className="counter-info">
                                 <div className="counter-count">
-                                    $9,780
+                                   {user.length}
                                 </div>
                                 <GroupAddIcon/>
                             </div>
