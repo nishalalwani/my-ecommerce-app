@@ -3,7 +3,7 @@ import "./App.css"
 import Home from './components/Home'
 import Checkout from './components/Checkout'
 import Login from './components/Login'
-import {BrowserRouter as Router,Routes ,Route,Navigate} from "react-router-dom"
+import {HashRouter as Router,Routes ,Route,Navigate} from "react-router-dom"
 import SignUp from './components/SignUp'
 import MyState from './context/MyState'
 import Productinfo from './components/Productinfo'
