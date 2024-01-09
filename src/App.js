@@ -21,8 +21,9 @@ import Order from './components/Order'
 const App = () => {
   return (
     <>
-   <MyState>
-    <Router>
+   
+    <Router> 
+    <MyState>
     <Routes>
        <Route path="/" element={<Home/>} />
        <Route path='/login' element={<Login/>}/>
@@ -68,11 +69,9 @@ const App = () => {
 
     </Routes>
     <ToastContainer/>
-    </Router>
     </MyState>
-   
-      
-    </>
+    </Router>
+</>
   )
 }
 

@@ -4,8 +4,11 @@ import { QuerySnapshot,addDoc,getDocs ,Timestamp, collection, onSnapshot, orderB
 import { toast } from 'react-toastify';
 import { fireDB } from '../firebase/firebase';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useNavigate } from 'react-router-dom';
 
 const MyState = ({children}) => {
+
+  const navigate=useNavigate();
 
   const [searchkey, setSearchkey] = useState('')
   const [filterType, setFilterType] = useState('')
