@@ -77,7 +77,7 @@ const Ordernow = () => {
           order_receipt: 'order_rcptid_' + name,
           name: "E-Bharat",
           description: "for testing purpose",
-          handler: function (response) {
+          handler: async function (response) {
             // console.log(response)
             toast.success('Payment Successful')
             const paymentId = response.razorpay_payment_id
@@ -99,11 +99,13 @@ const Ordernow = () => {
             }
     
             try {
-              const result = addDoc(collection(fireDB, "orders"), orderInfo)
+              const result = await addDoc(collection(fireDB, "orders"), orderInfo)
+              console.log('result',result);
+              toast.success('Order placed successfully');
               window.location.href="/"
               
             } catch (error) {
-              console.log(error)
+              console.log('errroorr',error)
             }
           },
     

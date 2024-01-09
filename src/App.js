@@ -45,7 +45,7 @@ const App = () => {
        }/>
 
        <Route path="/signup"  element={<SignUp/>}/>
-       <Route path='/productinfo/:id' element={<Productinfo/>}/>
+       <Route path="/productinfo/:id" element={<Productinfo />} />
        <Route path='/updateproduct' element={<UpdateProduct/>}/>
 
        <Route path='/dashboard' element={
@@ -90,7 +90,7 @@ export const ProtectedRoutes=({children})=>{
 
 export const ProtectedRouteForAdmin=({children})=>{
   const admin=JSON.parse(localStorage.getItem("user"))
-  if(admin.user.email==="lalwaninisha02@gmail.com"){
+  if(admin.user.email==="admin@gmail.com"){
     return children
   }
   else{

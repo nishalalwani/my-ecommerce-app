@@ -1,6 +1,6 @@
 import React,{useContext, useState} from 'react'
 import "./login.css"
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import myContext from '../context/MyContext'
 import { toast } from 'react-toastify';
 import Loader from '../loader/Loader';
@@ -15,6 +15,7 @@ const SignUp = () => {
   const[name,setName]=useState("")
   const[email,setEmail]=useState("")
   const[password,setPassword]=useState("")
+  const navigate = useNavigate();
 
   const context=useContext(myContext)
   const{loading,setLoading}=context
@@ -59,7 +60,7 @@ const SignUp = () => {
           progress: undefined,
           theme: "colored",
         })
-        window.location.href="/login"
+        navigate("/login")
         setLoading(false)
     
         setName("");

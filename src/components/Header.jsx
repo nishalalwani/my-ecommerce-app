@@ -60,7 +60,7 @@ const Header = () => {
         <div className="header_nav">
 
           {
-            user?.user?.email==="lalwaninisha02@gmail.com"?
+            user?.user?.email==="admin@gmail.com"?
             <Link to="/dashboard" className='header_link'>
           <div className="header_option">
           <span className='header_optionLineOne'>Hello Admin</span>

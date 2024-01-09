@@ -19,7 +19,7 @@
     color: rgb(255, 204, 0);
 }
 .product_information{
-    height: 100px;
+    height: 184px;
     margin-bottom:8rem;
     
 }
@@ -27,8 +27,8 @@
     font-size: 23px;
     font-weight: 500;
 }
-.product>img{
-    max-height: 200px;
+.product__img{
+    max-height: 272px;
     width: 100%;
     object-fit: contain;
     margin-bottom: 37px;

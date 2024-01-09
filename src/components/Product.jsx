@@ -4,6 +4,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { useDispatch, useSelector } from 'react-redux';
 import {add} from "../store/cartSlice"
 import myContext from '../context/MyContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const Product = () => {
@@ -14,7 +15,7 @@ const Product = () => {
     const{product,searchkey,filterType,selecttitle,mode}=context
 
     const dispatch=useDispatch()
-
+    const navigate = useNavigate();
     const addToCart=(item)=>{
        
         dispatch(add(item))
@@ -22,8 +23,9 @@ const Product = () => {
     }
     useEffect(()=>{
         localStorage.setItem('cart',JSON.stringify(cartItems))
+        console.log("products",product)
     },[cartItems])
-    console.log(selecttitle,"select")
+    
   return (
         <>
         {product
@@ -35,7 +37,7 @@ const Product = () => {
             return(
                     
                 <div className="product col-3 col-md-7 col-sm-7" style={{backgroundColor:mode==="dark"?"black":"",color:mode==="dark"?"white":"" ,border:mode==="dark"?"white 1px solid ":"",borderRadius:mode==="dark"?"20px ":""}}>
-                <div  onClick={()=>window.location.href=`/productinfo/${id}`}className="product_information">
+                <div onClick={()=>navigate(`/productinfo/${id}`)}className="product_information">
                     <button className='product_category_button'  style={{backgroundColor:mode==="dark"?"white":""}}>{category}</button>
                 <h4 >{title}</h4>
                 <p>{description}</p>
@@ -52,7 +54,8 @@ const Product = () => {
                     }
                 </div>
                 </div>
-                <img  onClick={()=>window.location.href=`/productinfo/${id}`}src={imageUrl} alt=''/>
+                <img className='product__img' onClick={()=>navigate(`/productinfo/${id}`)}src={imageUrl} alt=''/>
+               
                 <button onClick={()=>addToCart(item)}>Add to basket</button>
             </div>
             )

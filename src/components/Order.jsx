@@ -12,6 +12,7 @@ const Order = () => {
 
     const context= useContext(myContext)
     const{mode,order,loading}= context
+    console.log("orderdetail",order)
   return (
     <Layout>
     {loading && <div style={{display:"flex", justifyContent:"center", alignItem:"center"}}><Loader/></div>}

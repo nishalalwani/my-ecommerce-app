@@ -1,6 +1,6 @@
 import React,{useContext, useState} from 'react'
 import './login.css'
-import { Link } from 'react-router-dom'
+import { Link ,useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { auth } from '../firebase/firebase';
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
@@ -15,6 +15,7 @@ const Login = () => {
   const[password,setPassword]=useState("")
 
   const context=useContext(myContext)
+  const navigate = useNavigate();
   const{loading,setLoading}=context
   const Googleprovider= new GoogleAuthProvider()
 
@@ -51,7 +52,7 @@ const Login = () => {
         progress: undefined,
         theme: "colored",
       })
-      window.location.href="/"
+      navigate("/")
       setLoading(false)
     }
     catch(error){
