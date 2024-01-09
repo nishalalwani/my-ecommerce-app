@@ -1,11 +1,12 @@
 import React,{ useContext } from 'react'
 import "./AddProduct.css"
-import { Link } from 'react-router-dom'
+import { Link , useNavigate } from 'react-router-dom'
 import myContext from '../context/MyContext'
 import Loader from '../loader/Loader'
 
 const UpdateProduct = () => {
     const context= useContext(myContext)
+    const navigate=useNavigate()
     const {loading,products,setProducts,updateProducthandle} = context
   return (
     <>

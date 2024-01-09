@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useContext } from 'react';
 import "./Header.css"
-import {Link} from "react-router-dom"
+import {useNavigate,Link} from "react-router-dom"
 import SearchIcon from '@mui/icons-material/Search';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
@@ -14,6 +14,7 @@ import myContext from '../context/MyContext';
 const Header = () => {
 
   const context=useContext(myContext)
+  const navigate=useNavigate()
 
   const{toggleMode,mode}=context
 
@@ -22,7 +23,7 @@ const Header = () => {
 
   const logoutUser=()=>{
     localStorage.clear("user")
-    window.location.href="/"
+    navigate("/")
   }
   
 

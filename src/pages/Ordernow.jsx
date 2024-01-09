@@ -1,6 +1,6 @@
 import React,{useContext,useState,useEffect} from 'react'
 import "./AddProduct.css"
-import { Link } from 'react-router-dom'
+import { Link ,useNavigate} from 'react-router-dom'
 import myContext from '../context/MyContext'
 import Loader from '../loader/Loader'
 import { toast } from 'react-toastify';
@@ -30,7 +30,7 @@ const Ordernow = () => {
     console.log("price",temp)
   }, [cartItems])
   
-
+  const navigate = useNavigate();
 
 
 
@@ -102,7 +102,7 @@ const Ordernow = () => {
               const result = await addDoc(collection(fireDB, "orders"), orderInfo)
               console.log('result',result);
               toast.success('Order placed successfully');
-              window.location.href="/"
+              navigate("/")
               
             } catch (error) {
               console.log('errroorr',error)

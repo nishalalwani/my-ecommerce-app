@@ -42,7 +42,7 @@ const MyState = ({children}) => {
             toast.success("Product Add successfully")
             getProductData()
             setLoading(false)
-         window.location.href="/dashboard"
+         navigate("/dashboard")
           
 }
       catch(error){
@@ -90,7 +90,7 @@ const updateProducthandle = async (e) => {
       toast.success("Product Updated successfully")
       
       setTimeout(()=>{
-        window.location.href = '/dashboard'
+        navigate('/dashboard')
       },8000)
       getProductData();
       setLoading(false)
