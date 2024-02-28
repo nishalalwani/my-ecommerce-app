@@ -65,8 +65,8 @@ const MyState = ({ children }) => {
     setLoading(true);
     try {
       await addDoc(productref, products);
-      console.log(products, "products in backend");
-      toast.success("Product Add successfully");
+      // console.log(products, "products in backend");
+      toast.success("Product added successfully");
       getProductData();
       setLoading(false);
       navigate("/dashboard");
@@ -107,14 +107,13 @@ const MyState = ({ children }) => {
     setLoading(true);
     try {
       await setDoc(doc(fireDB, "products", products.id), products);
-      toast.success("Product Updated successfully");
+      toast.success("Product updated successfully");
       navigate("/dashboard");
       getProductData();
       setLoading(false);
     } catch (error) {
       toast.error("update failed");
       setLoading(false);
-      console.log(error);
     }
     setProducts("");
   };
@@ -123,7 +122,7 @@ const MyState = ({ children }) => {
     try {
       setLoading(true);
       await deleteDoc(doc(fireDB, "products", item.id));
-      toast.success("Product Deleted successfully");
+      toast.success("Product deleted successfully");
       setLoading(false);
       getProductData();
     } catch (error) {
@@ -151,12 +150,10 @@ const MyState = ({ children }) => {
   const productCart = useSelector((state) => state.cart);
 
   useEffect(() => {
-    console.log(productCart);
     const temp = productCart?.reduce((amt, item) => {
       return amt + Number(item.price);
     }, 0);
     setSubtotal(temp);
-    console.log(subtotal);
   }, [productCart]);
 
   const [order, setOrder] = useState([]);

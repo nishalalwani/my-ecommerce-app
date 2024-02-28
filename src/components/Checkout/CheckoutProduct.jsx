@@ -32,7 +32,6 @@ const CheckoutProduct = ({
   const dispatch = useDispatch();
 
   const delProd = (item) => {
-    console.log(id);
     dispatch(del(item));
   };
 

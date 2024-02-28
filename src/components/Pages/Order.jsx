@@ -9,7 +9,6 @@ const Order = () => {
 
   const context = useContext(myContext);
   const { mode, order, loading } = context;
-  console.log("orderdetail", order);
   return (
     <Layout>
       {loading && (

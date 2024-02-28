@@ -16,7 +16,6 @@ const Ordernow = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const cartItems = useSelector((state) => state.cart);
-  console.log("cart", cartItems);
 
   const [totalAmount, setTotalAmount] = useState(0);
   useEffect(() => {
@@ -25,7 +24,6 @@ const Ordernow = () => {
       temp = temp + parseInt(cartItem.price);
     });
     setTotalAmount(temp);
-    console.log("price", temp);
   }, [cartItems]);
 
   const navigate = useNavigate();
@@ -58,7 +56,6 @@ const Ordernow = () => {
         year: "numeric",
       }),
     };
-    console.log("address info", addressInfo);
 
     var options = {
       key: "rzp_test_jXzymDFQvd158T",
@@ -70,7 +67,6 @@ const Ordernow = () => {
       name: "E-Bharat",
       description: "for testing purpose",
       handler: async function (response) {
-        // console.log(response)
         toast.success("Payment Successful");
         const paymentId = response.razorpay_payment_id;
         // store in firebase
@@ -89,11 +85,11 @@ const Ordernow = () => {
 
         try {
           const result = await addDoc(collection(fireDB, "orders"), orderInfo);
-          console.log("result", result);
+          // console.log("result", result);
           toast.success("Order placed successfully");
           navigate("/");
         } catch (error) {
-          console.log("errroorr", error);
+          // console.log("errroorr", error);
         }
       },
 
@@ -101,10 +97,8 @@ const Ordernow = () => {
         color: "#3399cc",
       },
     };
-    console.log("rupee", totalAmount);
     var pay = new window.Razorpay(options);
     pay.open();
-    console.log(pay);
   };
 
   return (

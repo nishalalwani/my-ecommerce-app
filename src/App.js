@@ -19,11 +19,13 @@ import AddProduct from "./components/Admin/AddProduct";
 import UpdateProduct from "./components/Admin/UpdateProduct";
 import Ordernow from "./components/Checkout/Ordernow";
 import Order from "./components/Pages/Order";
+import ScrollToTop from "./components/Scroll/ScrollToTop";
 
 const App = () => {
   return (
     <>
       <Router>
+        <ScrollToTop/>
         <MyState>
           <Routes>
             <Route path="/" element={<Home />} />

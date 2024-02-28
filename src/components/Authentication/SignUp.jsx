@@ -47,7 +47,7 @@ const SignUp = () => {
 
       const userRef = collection(fireDB, "users");
       await addDoc(userRef, user);
-      toast.success("Signup Succesfull", {
+      toast.success("Signup Succesful", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: true,
@@ -65,7 +65,6 @@ const SignUp = () => {
       setPassword("");
       setLoading(false);
     } catch (error) {
-      console.log(error);
       toast.error("Signup failed", {
         position: "top-right",
         autoClose: 5000,

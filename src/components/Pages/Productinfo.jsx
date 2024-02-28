@@ -41,7 +41,7 @@ const Productinfo = () => {
 
   const addTocart = (myproduct) => {
     dispatch(add(myproduct));
-    toast.success("add to cart");
+    toast.success("Added to cart");
   };
 
   return (

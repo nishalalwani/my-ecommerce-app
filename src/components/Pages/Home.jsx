@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext } from "react";
 import "../Layout/Home.css";
 import Product from "./Product";
-import { useDispatch } from "react-redux";
 import Layout from "../Layout/Layout";
 import myContext from "../../context/MyContext";
 import banner1 from "../../images/banner1.png";
@@ -18,20 +17,12 @@ import UnarchiveIcon from "@mui/icons-material/Unarchive";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import { add } from "../../store/cartSlice";
+import Countdown from "./Countdown";
 
 const Home = () => {
   const context = useContext(myContext);
-  const dispatch = useDispatch();
-
-  const addToCart = (item) => {
-    dispatch(add(item));
-    toast.success("add to cart");
-  };
 
   const { product } = context || {};
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   const slides = [{ image: banner2 }, { image: banner3 }, { image: banner4 }];
 
@@ -45,47 +36,8 @@ const Home = () => {
     autoplaySpeed: 5000,
   };
 
-  const {
-    title,
-    id,
-    price,
-    imageUrl1,
-    imageUrl2,
-    subcategory,
-    description,
-    category,
-    rating,
-    discountedPrice,
-  } = product?.[13] || {};
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    // Clear timeout if the component is unmounted or when timeLeft reaches 0
-    return () => clearTimeout(timer);
-  }, []);
-
-  function calculateTimeLeft() {
-    const difference = +new Date("2024-04-20") - +new Date();
-    let timeLeft = {};
-
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    return timeLeft;
-  }
-
   return (
     <Layout>
-
       <div className="slider-wrapper">
         <Slider {...settings}>
           {slides.map((slide, index) => (
@@ -98,9 +50,8 @@ const Home = () => {
 
       <div className="product-container">
         <div className="container">
-
           {/* Sidebar */}
-          
+
           <div className="sidebar  has-scrollbar">
             <div className="sidebar-category">
               <div className="product-showcase">
@@ -159,6 +110,8 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          {/* trending products */}
 
           <div className="product-box">
             <div className="product-minimal">
@@ -322,83 +275,12 @@ const Home = () => {
 
             {/* Deal of the day  Section*/}
 
-            {product && product.length > 0 && (
-              <div className="product-featured">
-                <h2 className="title">Deal of the day</h2>
-                <div className="showcase-wrapper has-scrollbar">
-                  <div className="showcase-container">
-                    <div className="showcase">
-                      <div className="showcase-banner">
-                        <img
-                          src={imageUrl1}
-                          alt="shampoo, conditioner & facewash packs"
-                          className="showcase-img"
-                        />
-                      </div>
-                      <div className="showcase-content">
-                        <div className="showcase-rating">
-                          {Array(Number(rating))
-                            .fill()
-                            .map((_, index) => (
-                              <p key={index}>
-                                <StarIcon />
-                              </p>
-                            ))}
-                        </div>
-                        <Link to={`/productinfo/${id}`}>
-                          <h3 className="showcase-title">{title}</h3>
-                        </Link>
-                        <p className="showcase-desc">{description}</p>
-                        <div className="price-box">
-                          <p className="price">₹{discountedPrice}</p>
-                          <del>₹{price}</del>
-                        </div>
-                        <button
-                          className="add-cart-btn"
-                          onClick={() => addToCart(product[13])}
-                        >
-                          add to cart
-                        </button>
-                        <div className="showcase-status">
-                          <div className="showcase-status-bar" />
-                        </div>
-                        <div className="countdown-box">
-                          <p className="countdown-desc">
-                            Hurry Up! Offer ends in:
-                          </p>
-                          <div className="countdown">
-                            <div className="countdown-content">
-                              <p className="display-number">{timeLeft.days}</p>
-                              <p className="display-text">Days</p>
-                            </div>
-                            <div className="countdown-content">
-                              <p className="display-number">{timeLeft.hours}</p>
-                              <p className="display-text">Hours</p>
-                            </div>
-                            <div className="countdown-content">
-                              <p className="display-number">
-                                {timeLeft.minutes}
-                              </p>
-                              <p className="display-text">Min</p>
-                            </div>
-                            <div className="countdown-content">
-                              <p className="display-number">
-                                {timeLeft.seconds}
-                              </p>
-                              <p className="display-text">Sec</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+            <Countdown />
           </div>
         </div>
       </div>
       <div>
+        {/* Services section */}
 
         <div className="container">
           <div className="testimonials-box">

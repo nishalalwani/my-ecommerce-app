@@ -16,7 +16,6 @@ const Checkout = () => {
     const uniqueIds = Array.from(new Set(productCart.map((item) => item.id)));
     const uniqueProducts = uniqueIds.map((id) => {
       const count = productCart.filter((item) => item.id === id).length;
-      console.log(`Product ID: ${id}, Count: ${count}`);
       const product = productCart.find((item) => item.id === id);
       return { ...product, count };
     });

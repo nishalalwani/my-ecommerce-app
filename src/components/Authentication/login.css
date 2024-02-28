@@ -62,3 +62,16 @@
   text-decoration: underline;
   color: var(--salmon-gold);
 }
+
+
+@media (max-width: 768px) {
+  .login_container {
+    width: 300px;
+  }
+  .login_container > form > input {
+    height: 39px;
+  }
+  .login_signInButton{
+    height: 39px;
+  }
+}

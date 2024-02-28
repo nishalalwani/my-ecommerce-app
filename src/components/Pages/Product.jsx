@@ -28,11 +28,10 @@ const Product = () => {
 
   const addToCart = (item) => {
     dispatch(add(item));
-    toast.success("add to cart");
+    toast.success("Added to cart");
   };
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
-    console.log("products", product);
   }, [cartItems]);
 
   return (

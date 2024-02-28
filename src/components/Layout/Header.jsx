@@ -58,7 +58,6 @@ const Header = () => {
   }, [location.pathname]);
 
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
 
   const logoutUser = () => {
     localStorage.clear("user");
@@ -68,7 +67,6 @@ const Header = () => {
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     setOverlayVisible(!overlayVisible);
-    console.log("toggle");
   };
 
   const [open, setOpen] = React.useState(false);
@@ -388,12 +386,14 @@ const Header = () => {
                   </Link>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
+                 
                     <ul className="dropdown-list">
                       {[...menSubcategories].map((subcategory) => (
                         <li
-                          onClick={() =>
+                          onClick={() =>{
                             handleSubcategorySelect("Men", subcategory)
+                            handleMobileMenuToggle()
+                          }
                           }
                           className="dropdown-item"
                           key={subcategory}
@@ -402,7 +402,7 @@ const Header = () => {
                         </li>
                       ))}
                     </ul>
-                  </Typography>
+                
                 </AccordionDetails>
               </Accordion>
             </li>
@@ -419,12 +419,13 @@ const Header = () => {
                   </Link>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
                     <ul className="dropdown-list">
                       {[...womenSubcategories].map((subcategory) => (
                         <li
-                          onClick={() =>
+                          onClick={() =>{
                             handleSubcategorySelect("Men", subcategory)
+                            handleMobileMenuToggle()
+                          }
                           }
                           className="dropdown-item"
                           key={subcategory}
@@ -433,7 +434,6 @@ const Header = () => {
                         </li>
                       ))}
                     </ul>
-                  </Typography>
                 </AccordionDetails>
               </Accordion>
             </li>
@@ -449,13 +449,13 @@ const Header = () => {
                   </Link>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
                     <ul className="dropdown-list">
                       {[...perfumeSubcategories].map((subcategory) => (
                         <li
-                          onClick={() =>
+                          onClick={() =>{
                             handleSubcategorySelect("Men", subcategory)
-                          }
+                            handleMobileMenuToggle()
+                          }}
                           className="dropdown-item"
                           key={subcategory}
                         >
@@ -463,7 +463,6 @@ const Header = () => {
                         </li>
                       ))}
                     </ul>
-                  </Typography>
                 </AccordionDetails>
               </Accordion>
             </li>
