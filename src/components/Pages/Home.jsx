@@ -33,7 +33,7 @@ const Home = () => {
   const { product } = context || {};
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
-  const slides = [{ image: banner2 }, { image: banner4 }, { image: banner3 }];
+  const slides = [{ image: banner2 }, { image: banner3 }, { image: banner4 }];
 
   const settings = {
     dots: false,

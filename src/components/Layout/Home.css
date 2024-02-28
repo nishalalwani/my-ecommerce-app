@@ -1710,7 +1710,7 @@ footer {
 
   .slider-item {
     aspect-ratio: auto;
-    height: 350px;
+    /* height: 350px; */
   }
 
   .banner-content {
