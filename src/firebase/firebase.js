@@ -8,13 +8,13 @@ import {getFirestore} from 'firebase/firestore';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCbG2AU0FOtYSQ9jATD2hVff_1u5QOKacU",
-    authDomain: "clone-1962a.firebaseapp.com",
-    projectId: "clone-1962a",
-    storageBucket: "clone-1962a.appspot.com",
-    messagingSenderId: "743189103277",
-    appId: "1:743189103277:web:f2f70a6181b98ff769bc24",
-    measurementId: "G-2T34P8T3C3"
+  apiKey: "AIzaSyCuG48J3u3dESDE1okbloOUGewTiYKE4qI",
+  authDomain: "ecommerce-clone-c8986.firebaseapp.com",
+  projectId: "ecommerce-clone-c8986",
+  storageBucket: "ecommerce-clone-c8986.appspot.com",
+  messagingSenderId: "1078709972076",
+  appId: "1:1078709972076:web:7a0215e6e8cac38a0bbc49",
+  measurementId: "G-H9RNBMBFQX"
   };
 
 const app=initializeApp(firebaseConfig)
