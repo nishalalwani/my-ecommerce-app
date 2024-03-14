@@ -41,7 +41,6 @@ const Product = () => {
         <div className="product-grid">
           {!selectedCategory || !selectedSubcategory
             ? product
-                .filter((obj) => obj.title.toLowerCase().includes(searchkey))
                 .map((item, index) => {
                   const {
                     id,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useContext } from "react";
 import "./Home.css";
 import { useNavigate, Link, useLocation } from "react-router-dom";
@@ -27,6 +27,16 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import CloseIcon from "@mui/icons-material/Close";
 
+const debounce = (func, delay) => {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+};
+
 const Header = () => {
   const context = useContext(myContext);
   const {
@@ -38,8 +48,27 @@ const Header = () => {
   } = context;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [overlayVisible, setOverlayVisible] = useState(false);
+  const [matchedProducts, setMatchedProducts] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
+  const matchedProductRef = useRef(null);
+
+  const handleSearch = () => {
+    const filteredProducts = product.filter((prod) =>
+      prod.title.toLowerCase().includes(searchkey.toLowerCase())
+    );
+    setMatchedProducts(filteredProducts);
+  };
+
+  function handleChange(e) {
+    const inputValue = e.target.value;
+    setSearchkey(inputValue);
+    if (inputValue.trim() === "") {
+      setMatchedProducts([]); // Clear matched products if search input is empty
+    } else {
+      debouncedHandleSearch(inputValue); // Invoke search function only when search input is not empty
+    }
+  }
 
   const handleSubcategorySelect = (category, subcategory) => {
     setSelectedCategory(category);
@@ -51,10 +80,13 @@ const Header = () => {
       allProductsSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const debouncedHandleSearch = debounce(handleSearch, 300);
 
   useEffect(() => {
     setSelectedCategory("");
     setSelectedSubcategory("");
+    setSearchkey("");
+    setMatchedProducts([]);
   }, [location.pathname]);
 
   const user = JSON.parse(localStorage.getItem("user"));
@@ -101,6 +133,27 @@ const Header = () => {
       perfumeSubcategories.add(item.subcategory);
     }
   });
+
+  useEffect(() => {
+    return () => {
+      // Clear matchedProducts when the component unmounts
+      setMatchedProducts([]);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleDocumentClick = (e) => {
+      if (!matchedProductRef.current.contains(e.target)) {
+        setMatchedProducts([]);
+      }
+    };
+
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
 
   return (
     <div>
@@ -153,17 +206,33 @@ const Header = () => {
             <Link to="/" className="header-logo">
               <img src={logo} alt="Anon's logo" width={75} height={70} />
             </Link>
-            <div className="header-search-container">
+            <div className="header-search-container" ref={matchedProductRef}>
               <input
                 type="search"
                 name="search"
                 className="search-field"
-                onChange={(e) => setSearchkey(e.target.value)}
+                onChange={handleChange}
                 placeholder="Enter your product name..."
               />
-              <button className="search-btn">
+              <button className="search-btn" onClick={handleSearch}>
                 <SearchIcon />
               </button>
+              {matchedProducts.length > 0 && (
+                <div className="matched-products">
+                  {matchedProducts.map((product) => (
+                    <div
+                      key={product.id}
+                      className="product-item"
+                      onClick={() => {
+                        navigate(`/productinfo/${product.id}`);
+                        setMatchedProducts([]);
+                      }}
+                    >
+                      {product.title}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="header-user-actions">
               <Link to="/order">
@@ -386,23 +455,20 @@ const Header = () => {
                   </Link>
                 </AccordionSummary>
                 <AccordionDetails>
-                 
-                    <ul className="dropdown-list">
-                      {[...menSubcategories].map((subcategory) => (
-                        <li
-                          onClick={() =>{
-                            handleSubcategorySelect("Men", subcategory)
-                            handleMobileMenuToggle()
-                          }
-                          }
-                          className="dropdown-item"
-                          key={subcategory}
-                        >
-                          <Link to="/">{subcategory}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                
+                  <ul className="dropdown-list">
+                    {[...menSubcategories].map((subcategory) => (
+                      <li
+                        onClick={() => {
+                          handleSubcategorySelect("Men", subcategory);
+                          handleMobileMenuToggle();
+                        }}
+                        className="dropdown-item"
+                        key={subcategory}
+                      >
+                        <Link to="/">{subcategory}</Link>
+                      </li>
+                    ))}
+                  </ul>
                 </AccordionDetails>
               </Accordion>
             </li>
@@ -419,21 +485,20 @@ const Header = () => {
                   </Link>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <ul className="dropdown-list">
-                      {[...womenSubcategories].map((subcategory) => (
-                        <li
-                          onClick={() =>{
-                            handleSubcategorySelect("Men", subcategory)
-                            handleMobileMenuToggle()
-                          }
-                          }
-                          className="dropdown-item"
-                          key={subcategory}
-                        >
-                          <Link to="/">{subcategory}</Link>
-                        </li>
-                      ))}
-                    </ul>
+                  <ul className="dropdown-list">
+                    {[...womenSubcategories].map((subcategory) => (
+                      <li
+                        onClick={() => {
+                          handleSubcategorySelect("Men", subcategory);
+                          handleMobileMenuToggle();
+                        }}
+                        className="dropdown-item"
+                        key={subcategory}
+                      >
+                        <Link to="/">{subcategory}</Link>
+                      </li>
+                    ))}
+                  </ul>
                 </AccordionDetails>
               </Accordion>
             </li>
@@ -449,20 +514,20 @@ const Header = () => {
                   </Link>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <ul className="dropdown-list">
-                      {[...perfumeSubcategories].map((subcategory) => (
-                        <li
-                          onClick={() =>{
-                            handleSubcategorySelect("Men", subcategory)
-                            handleMobileMenuToggle()
-                          }}
-                          className="dropdown-item"
-                          key={subcategory}
-                        >
-                          <Link to="/">{subcategory}</Link>
-                        </li>
-                      ))}
-                    </ul>
+                  <ul className="dropdown-list">
+                    {[...perfumeSubcategories].map((subcategory) => (
+                      <li
+                        onClick={() => {
+                          handleSubcategorySelect("Men", subcategory);
+                          handleMobileMenuToggle();
+                        }}
+                        className="dropdown-item"
+                        key={subcategory}
+                      >
+                        <Link to="/">{subcategory}</Link>
+                      </li>
+                    ))}
+                  </ul>
                 </AccordionDetails>
               </Accordion>
             </li>

@@ -239,6 +239,29 @@ body::-webkit-scrollbar-thumb:hover {
   display: none;
 }
 
+.matched-products {
+  position: absolute;
+  top: 100%; /* Position it just below the input field */
+  left: 0;
+  width: 100%;
+  z-index: 999; /* Ensure it's above other elements */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none; /* Remove border on top */
+  border-radius: 0 0 4px 4px; /* Rounded corners on the bottom */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.product-item {
+  padding: 10px;
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.product-item:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+}
+
+
 .search-btn {
   /* background: var(--white); */
   position: absolute;
