@@ -108,8 +108,15 @@ const Login = () => {
             <button className="login_signInButton" onClick={signin}>
               Sign In
             </button>
-          </form>
 
+            <button className="login_signInButton" onClick={()=>{
+              setEmail("admin@gmail.com");
+              setPassword("password");
+            }}>
+            Get Admin Credentials
+            </button>
+          </form>
+          
           <p>
             Not have an account ?{" "}
             <Link to="/signup">
