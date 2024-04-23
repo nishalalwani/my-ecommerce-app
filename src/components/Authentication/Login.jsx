@@ -109,7 +109,8 @@ const Login = () => {
               Sign In
             </button>
 
-            <button className="login_signInButton" onClick={()=>{
+            <button className="login_signInButton" onClick={(e)=>{
+              e.preventDefault();
               setEmail("admin@gmail.com");
               setPassword("password");
             }}>
