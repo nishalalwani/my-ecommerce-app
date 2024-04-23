@@ -57,7 +57,7 @@ const Home = () => {
               <div className="product-showcase">
                 <h3 className="showcase-heading">best sellers</h3>
                 <div className="showcase-wrapper">
-                  {product.slice(5, 11).map((item, index) => {
+                  {product.slice(7, 12).map((item, index) => {
                     const {
                       id,
                       title,

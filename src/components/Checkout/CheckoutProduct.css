@@ -48,4 +48,7 @@
   .chekoutProduct_info > button {
     font-size: 13px;
   }
+  .checkoutProduct > img {
+    max-width: 138px;
+  }
 }

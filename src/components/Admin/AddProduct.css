@@ -39,6 +39,14 @@
   justify-items: center;
   border-radius: 6px;
 }
+.addproductLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    justify-content: center;
+  }
+  
 @media (max-width: 768px) {
   .addproduct_container > form > input {
     height: 39px;

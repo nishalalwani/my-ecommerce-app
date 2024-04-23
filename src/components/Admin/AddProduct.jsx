@@ -11,7 +11,7 @@ const AddProduct = () => {
 
   return (
     <>
-      <div className="login">
+      <div className="addproductLogin">
         <Link to="/">
           <img className="login_logo" src={logo} alt="" />
         </Link>

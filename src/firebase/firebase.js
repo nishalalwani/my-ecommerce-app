@@ -8,13 +8,13 @@ import {getFirestore} from 'firebase/firestore';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCuG48J3u3dESDE1okbloOUGewTiYKE4qI",
-  authDomain: "ecommerce-clone-c8986.firebaseapp.com",
-  projectId: "ecommerce-clone-c8986",
-  storageBucket: "ecommerce-clone-c8986.appspot.com",
-  messagingSenderId: "1078709972076",
-  appId: "1:1078709972076:web:7a0215e6e8cac38a0bbc49",
-  measurementId: "G-H9RNBMBFQX"
+  apiKey: "AIzaSyA0VGRIXepezjY0TKxHqHocWAVxw1ISeBc",
+  authDomain: "shopie-dd086.firebaseapp.com",
+  projectId: "shopie-dd086",
+  storageBucket: "shopie-dd086.appspot.com",
+  messagingSenderId: "1082671327025",
+  appId: "1:1082671327025:web:9ea9aa4ea2a72bc70a3210",
+  measurementId: "G-5X542ZDMQ8"
   };
 
 const app=initializeApp(firebaseConfig)

@@ -11,7 +11,7 @@ const UpdateProduct = () => {
   const { loading, products, setProducts, updateProducthandle } = context;
   return (
     <>
-      <div className="login">
+      <div className="addproductLogin">
         <Link to="/">
           <img className="login_logo" src={logo} />
         </Link>

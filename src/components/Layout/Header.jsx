@@ -129,7 +129,7 @@ const Header = () => {
       menSubcategories.add(item.subcategory);
     } else if (item.category === "Women") {
       womenSubcategories.add(item.subcategory);
-    } else if (item.category === "Perfume") {
+    } else if (item.category === "Fragrance") {
       perfumeSubcategories.add(item.subcategory);
     }
   });
@@ -362,13 +362,13 @@ const Header = () => {
 
               <li className="menu-category">
                 <Link to="/" className="menu-title">
-                  Perfume
+                  Fragrance
                 </Link>
                 <ul className="dropdown-list">
                   {[...perfumeSubcategories].map((subcategory) => (
                     <li
                       onClick={() =>
-                        handleSubcategorySelect("Perfume", subcategory)
+                        handleSubcategorySelect("Fragrance", subcategory)
                       }
                       className="dropdown-item"
                       key={subcategory}
@@ -510,7 +510,7 @@ const Header = () => {
                   id="panel1-header"
                 >
                   <Link to="/">
-                    <Typography>Perfume</Typography>
+                    <Typography>Fragrance</Typography>
                   </Link>
                 </AccordionSummary>
                 <AccordionDetails>
