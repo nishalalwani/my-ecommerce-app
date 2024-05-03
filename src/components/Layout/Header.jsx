@@ -489,7 +489,7 @@ const Header = () => {
                     {[...womenSubcategories].map((subcategory) => (
                       <li
                         onClick={() => {
-                          handleSubcategorySelect("Men", subcategory);
+                          handleSubcategorySelect("Women", subcategory);
                           handleMobileMenuToggle();
                         }}
                         className="dropdown-item"
@@ -518,7 +518,7 @@ const Header = () => {
                     {[...perfumeSubcategories].map((subcategory) => (
                       <li
                         onClick={() => {
-                          handleSubcategorySelect("Men", subcategory);
+                          handleSubcategorySelect("Fragrance", subcategory);
                           handleMobileMenuToggle();
                         }}
                         className="dropdown-item"
