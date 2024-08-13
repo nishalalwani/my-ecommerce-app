@@ -28,10 +28,10 @@ const Countdown = () => {
     category,
     rating,
     discountedPrice,
-  } = product?.[18] || {};
+  } = product?.[1] || {};
 
   function calculateTimeLeft() {
-    const difference = +new Date("2024-06-4") - +new Date();
+    const difference = +new Date("2024-10-4") - +new Date();
     let timeLeft = {};
 
     if (difference > 0) {

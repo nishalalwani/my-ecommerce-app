@@ -8,14 +8,14 @@ import {getFirestore} from 'firebase/firestore';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0VGRIXepezjY0TKxHqHocWAVxw1ISeBc",
-  authDomain: "shopie-dd086.firebaseapp.com",
-  projectId: "shopie-dd086",
-  storageBucket: "shopie-dd086.appspot.com",
-  messagingSenderId: "1082671327025",
-  appId: "1:1082671327025:web:9ea9aa4ea2a72bc70a3210",
-  measurementId: "G-5X542ZDMQ8"
-  };
+  apiKey: "AIzaSyDFrB8oHwpZ0LLSjUvcZRSbH-HIPthHQOk",
+  authDomain: "shopie-198e0.firebaseapp.com",
+  projectId: "shopie-198e0",
+  storageBucket: "shopie-198e0.appspot.com",
+  messagingSenderId: "642654845583",
+  appId: "1:642654845583:web:31222e561f0d5e19804efa",
+  measurementId: "G-BPYJFKR3TP"
+};
 
 const app=initializeApp(firebaseConfig)
 const auth=getAuth(app)
