@@ -132,10 +132,19 @@ ul {
 }
 
 .box {
-  background-color: var(--box-bg);
+
   padding: 20px;
-  border: 0.5px solid var(--border-color);
-  border-radius: var(--box-border-radius);
+
+}
+.counter-box{
+  border: 0.5px solid rgb(189, 189, 189);
+  border-radius: 14px;
+}
+
+.dashboard-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .box-hover:hover {

@@ -28,10 +28,10 @@ const Dashboard = () => {
         <h1 style={{ color: mode === "dark" ? "white" : "" }}>
           Welcome to Dashboard !
         </h1>
-        <div className="row">
+        <div className="row dashboard-box">
           <div className="col-3 col-md-6 col-sm-12">
             <div
-              className="box box-hover"
+              className="box box-hover counter-box"
               style={{
                 backgroundColor: mode === "dark" ? "#ffffff00" : "",
                 color: mode === "dark" ? "white" : "",
@@ -48,7 +48,7 @@ const Dashboard = () => {
           </div>
           <div className="col-3 col-md-6 col-sm-12">
             <div
-              className="box box-hover"
+              className="box box-hover counter-box"
               style={{
                 backgroundColor: mode === "dark" ? "#ffffff00" : "",
                 color: mode === "dark" ? "white" : "",
@@ -65,7 +65,7 @@ const Dashboard = () => {
           </div>
           <div className="col-3 col-md-6 col-sm-12">
             <div
-              className="box box-hover"
+              className="box box-hover counter-box"
               style={{
                 backgroundColor: mode === "dark" ? "#ffffff00" : "",
                 color: mode === "dark" ? "white" : "",
